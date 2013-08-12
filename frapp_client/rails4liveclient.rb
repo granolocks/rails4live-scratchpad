@@ -19,6 +19,7 @@ class Rails4LiveClient
     socket.puts "GET / HTTP/1.1\r\n"
     socket.puts "\r\n"
     while command = socket.gets
+      puts "rcvd: #{command}"
       @emiter.work(command)
     end
     socket.close
@@ -34,3 +35,4 @@ client.poll
 stream.map do |event|
   puts event
 end
+
